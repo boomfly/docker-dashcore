@@ -1,0 +1,37 @@
+{
+  "network": "testnet",
+  "port": 3001,
+  "services": [
+    "@dashevo/insight-api",
+    "@dashevo/insight-ui",
+    "dashd",
+    "web"
+  ],
+  "servicesConfig": {
+    "dashd": {
+      "spawn": {
+        "datadir": "/.dashcore/data",
+        "exec": "/usr/local/bin/dashd"
+      },
+      "connect": [
+        {
+          "rpchost": "127.0.0.1",
+          "rpcuser": "dash",
+          "rpcpassword": "local321",
+          "zmqpubrawtx": "tcp://127.0.0.1:28332"
+        }
+      ]
+    },
+    "@dashevo/insight-api": {
+      "disableRateLimiter": true,
+      "rateLimiterOptions": {
+        "whitelist": ["::ffff:127.0.0.1"]
+      },
+      "routePrefix": "api"
+    },
+    "@dashevo/insight-ui": {
+      "apiPrefix": "api",
+      "routePrefix": ""
+    }
+  }
+}
