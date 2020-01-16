@@ -1,1 +1,1 @@
-# Docker litecore image
+# Docker dashcore image
